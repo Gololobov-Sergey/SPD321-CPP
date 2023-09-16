@@ -1,5 +1,6 @@
 ﻿#include<iostream>
 #include<Windows.h>
+#include<iomanip>
 using namespace std;
 
 
@@ -13,98 +14,134 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	///// 09.09.2023   ///////
+	srand(time(0));
 
+	// type name[size];
 
-	/*while (condition)
+	//const int size = 10;
+	//int arr[size]; // = { 3,6,5,3,2 };
+
+	//cout << arr << endl;
+
+	/*arr[0] = 12;
+	arr[1] = 1;*/
+
+	/*for (size_t i = 0; i < size; i++)
 	{
-		oper;
-	}
-
-	do
-	{
-		oper;
-	} while (condition);*/
-
-	/*int a = 1;
-	while (a <= 5)
-	{
-		cout << a << " ";
-		a++;
-	}
-	cout << endl;*/
-
-
-	/*int b = 1;
-	do
-	{
-		cout << b << " ";
-		b++;
-	} while (b <= 5);
-	cout << endl;*/
-
-	
-	/*for (int i = 1; i <= 5; i++)
-	{
-		cout << i << " ";
-	}
-	cout << endl;*/
-	
-	
-	/*int a, b, sum = 0;
-	cout << "Enter first range number >> ";
-	cin >> a;
-	cout << "Enter second range number >> ";
-	cin >> b;
-	if (a < b) 
-	{
-		for (int i = a; i <= b; i++) 
-		{
-			sum += i;
-		}
-		cout << sum << endl;
+		arr[i] = rand() % 20;
 	}*/
 
-
-	/*int n, sum = 0;
-	do
+	/*for (size_t i = 0; i < size; i++)
 	{
-		cin >> n;
-		sum += n;
-	} while (n != 0);
-	cout << sum << endl;*/
+		cout << arr[i] << " ";
+	}
+	cout << endl;*/
 
-
-	/*int a, b;
-	cin >> a >> b;
-	for (int i = a; i <= b; i++)
+	/*for (size_t i = 0; i < size; i++)
 	{
-		for (int j = 0; j < i; j++)
+		cout << "arr[" << i << "] = ";
+		cin >> arr[i];
+	}
+
+	int k = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] % 2 == 0)
+			k++;
+	}*/
+
+	/*int k = 0;
+	for (size_t i = 0; i < size; i++)
+	{
+		if (arr[i] == 0)
+			k++;
+	}
+	cout << "Count 0 = " << k << endl;
+
+	int k0 = 0;
+	for (size_t i = 0; arr[i] != 1; i++)
+	{
+		k0++;
+	}
+	cout << "Count 0 to 1 = " << k0 << endl;*/
+
+
+	/*int max = arr[0];
+
+	for (int i = 0; i < 10; ++i) {
+		if (arr[i] > max)
 		{
-			cout << i << " ";
+			max = arr[i];
+		}
+	}
+	cout << max << endl;*/
+
+	//for (size_t i = 0; i < size/2; i++)
+	//{
+	//	/*int t = arr[i];
+	//	arr[i] = arr[size - 1 - i];
+	//	arr[size - 1 - i] = t;*/
+
+	//	swap(arr[i], arr[size - 1 - i]);
+	//}
+
+
+	/*for (size_t i = 0; i < size - 1; i++)
+	{
+		for (size_t j = 0; j < size - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				swap(arr[j], arr[j + 1]);
+			}
+		}
+	}*/
+
+	/*for (size_t i = 0; i < size; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;*/
+
+
+
+	// type name[row][col];
+	const int row = 4;
+	const int col = 4;
+	int arr[row][col];// = { {2,4,6},{7,6},4,3,2 };
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % 10;
+		}
+	}
+
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << setw(3) << arr[i][j];
 		}
 		cout << endl;
-	}*/
-
-
-
-	/*int n;
-	cin >> n;
-
-	int m = n, k = 0;
-	while (m > 0) 
-	{
-		k++;
-		m /= 10;
 	}
 
-	for (int i = 0; i < 5 - k; i++)
+	int maxSum = INT_MIN;
+	int imax = 0;
+	for (size_t i = 0; i < row; i++)
 	{
-		cout << 0;
+		int sum = 0;
+		for (size_t j = 0; j < col; j++)
+		{
+			sum += arr[i][j];
+		}
+		if (sum > maxSum)
+		{
+			maxSum = sum;
+			imax = i;
+		}
 	}
-	cout << n << endl;*/
-
-
+	cout << imax << endl;
 
 
 	system("pause");
