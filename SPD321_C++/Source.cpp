@@ -1,6 +1,11 @@
 ﻿#include<iostream>
 #include<Windows.h>
 #include<iomanip>
+#include<algorithm>
+
+#include"function.h"
+#include"Timer.h"
+
 using namespace std;
 
 
@@ -9,106 +14,64 @@ enum OPERATION
 	LOAD, SAVE, EXIT
 };
 
+
+//type name(param)
+//{
+//	body;
+//}
+
+void printLine(int count = 10, char symbol = '*')
+{
+	for (size_t i = 0; i < count; i++)
+	{
+		cout << symbol;
+	}
+	cout << endl;
+}
+
+
+template<class T1, class T2, class T3>
+auto Sum(T1 a, T2 b, T3 c) -> decltype(a+b)
+{
+	return a + b + c;
+}
+
+
+
+float avg(int a, int b, int c)
+{
+	float d = ((float)a + b + c) / 3;
+	return d;
+}
+
+
+
+
 int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	1011110100;
+
 	srand(time(0));
 
-	// type name[size];
-
-	//const int size = 10;
-	//int arr[size]; // = { 3,6,5,3,2 };
-
-	//cout << arr << endl;
-
-	/*arr[0] = 12;
-	arr[1] = 1;*/
-
-	/*for (size_t i = 0; i < size; i++)
-	{
-		arr[i] = rand() % 20;
-	}*/
-
-	/*for (size_t i = 0; i < size; i++)
-	{
-		cout << arr[i] << " ";
-	}
-	cout << endl;*/
-
-	/*for (size_t i = 0; i < size; i++)
-	{
-		cout << "arr[" << i << "] = ";
-		cin >> arr[i];
-	}
-
-	int k = 0;
-	for (size_t i = 0; i < size; i++)
-	{
-		if (arr[i] % 2 == 0)
-			k++;
-	}*/
-
-	/*int k = 0;
-	for (size_t i = 0; i < size; i++)
-	{
-		if (arr[i] == 0)
-			k++;
-	}
-	cout << "Count 0 = " << k << endl;
-
-	int k0 = 0;
-	for (size_t i = 0; arr[i] != 1; i++)
-	{
-		k0++;
-	}
-	cout << "Count 0 to 1 = " << k0 << endl;*/
-
-
-	/*int max = arr[0];
-
-	for (int i = 0; i < 10; ++i) {
-		if (arr[i] > max)
-		{
-			max = arr[i];
-		}
-	}
-	cout << max << endl;*/
-
-	//for (size_t i = 0; i < size/2; i++)
-	//{
-	//	/*int t = arr[i];
-	//	arr[i] = arr[size - 1 - i];
-	//	arr[size - 1 - i] = t;*/
-
-	//	swap(arr[i], arr[size - 1 - i]);
-	//}
-
-
-	/*for (size_t i = 0; i < size - 1; i++)
-	{
-		for (size_t j = 0; j < size - 1 - i; j++)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				swap(arr[j], arr[j + 1]);
-			}
-		}
-	}*/
-
-	/*for (size_t i = 0; i < size; i++)
-	{
-		cout << arr[i] << " ";
-	}
-	cout << endl;*/
+	//const int size = 100000;
+	//int arr[size];
+	//setArray(arr, size, 0, 30000);
+	////printArray(arr, size);
+	//sort(arr, arr + size);
+	//
+	//Timer t;
+	//insertionSort(arr, size);
+	//cout << t.elapsed() << endl;
+	////printArray(arr, size);
 
 
 
-	// type name[row][col];
 	const int row = 4;
 	const int col = 4;
-	int arr[row][col];// = { {2,4,6},{7,6},4,3,2 };
+	int arr[10][10];
 	for (size_t i = 0; i < row; i++)
 	{
 		for (size_t j = 0; j < col; j++)
@@ -117,32 +80,25 @@ int main()
 		}
 	}
 
-	for (size_t i = 0; i < row; i++)
-	{
-		for (size_t j = 0; j < col; j++)
-		{
-			cout << setw(3) << arr[i][j];
-		}
-		cout << endl;
-	}
+	printArray2D(arr, row, col);
+	//
 
-	int maxSum = INT_MIN;
-	int imax = 0;
-	for (size_t i = 0; i < row; i++)
+	for (size_t i = 0; i < row - 1; i++)
 	{
-		int sum = 0;
-		for (size_t j = 0; j < col; j++)
+		for (size_t j = 0; j < row - 1 - i; j++)
 		{
-			sum += arr[i][j];
-		}
-		if (sum > maxSum)
-		{
-			maxSum = sum;
-			imax = i;
+			if (arr[j][0] > arr[j + 1][0])
+			{
+				for (size_t k = 0; k < col; k++)
+				{
+					swap(arr[j][k], arr[j+1][k]);
+				}
+			}
 		}
 	}
-	cout << imax << endl;
-
+	
+	cout << endl;
+	printArray2D(arr, row, col);
 
 	system("pause");
 }

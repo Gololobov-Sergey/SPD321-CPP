@@ -11,7 +11,7 @@ do
 	oper;
 } while (condition);*/
 
-/*int a = 1;
+/*int a = 1, b = 0;
 while (a <= 5)
 {
 	cout << a << " ";
