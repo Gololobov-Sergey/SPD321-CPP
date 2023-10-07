@@ -7,7 +7,7 @@
 using namespace std;
 
 template<class T>
-void printArray(T arr[], int size)
+void printArray(T* arr, int size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -17,7 +17,7 @@ void printArray(T arr[], int size)
 }
 
 template<class T>
-void setArray(T arr[], int size, int min = 0, int max = 9)
+void setArray(T* arr, int size, int min = 0, int max = 9)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -43,7 +43,7 @@ void reverse(int arr[], int size)
 }
 
 template<class T>
-int findArray(T arr[], int size, T key)
+int findArray(T* arr, int size, T key)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -57,7 +57,7 @@ int findArray(T arr[], int size, T key)
 
 
 template<class T>
-T maxValueArray(T arr[], int size)
+T maxValueArray(T* arr, int size)
 {
 	T max = arr[0];
 
@@ -109,7 +109,7 @@ void perfectInterval(int a, int b)
 
 
 template<class T>
-void bubbleSort(T arr[], int size)
+void bubbleSort(T* arr, int size)
 {
 	for (size_t i = 0; i < size - 1; i++)
 	{
@@ -128,7 +128,7 @@ void bubbleSort(T arr[], int size)
 
 
 template<class T>
-void selectionSort(T arr[], int size)
+void selectionSort(T* arr, int size)
 {
 	for (size_t current = 0; current < size - 1; current++)
 	{
@@ -147,7 +147,7 @@ void selectionSort(T arr[], int size)
 
 
 template<class T>
-void insertionSort(T arr[], int size)
+void insertionSort(T* arr, int size)
 {
 	T current;
 	int k;
@@ -177,4 +177,32 @@ void printArray2D(T arr[][10], int row, int col)
 		}
 		cout << endl;
 	}
+}
+
+
+template<class T>
+T* addValueArray(T* arr, int* size, T value)
+{
+	T* temp = new T[*size + 1];
+	for (size_t i = 0; i < *size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[*size] = value;
+	delete[] arr;
+	(*size)++;
+	return temp;
+}
+
+template<class T>
+T* removeValueArray(T* arr, int* size) 
+{
+	T* temp = new T[*size - 1];
+	for (size_t i = 0; i < *size - 1; i++)
+	{
+		temp[i] = arr[i];
+	}
+	delete[] arr;
+	(*size)--;
+	return temp;
 }

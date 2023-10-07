@@ -31,7 +31,7 @@ void printLine(int count = 10, char symbol = '*')
 
 
 template<class T1, class T2, class T3>
-auto Sum(T1 a, T2 b, T3 c) -> decltype(a+b)
+auto Sum(T1 a, T2 b, T3 c) -> decltype(a + b)
 {
 	return a + b + c;
 }
@@ -51,54 +51,127 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
-	1011110100;
-
+	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	//const int size = 100000;
-	//int arr[size];
-	//setArray(arr, size, 0, 30000);
-	////printArray(arr, size);
-	//sort(arr, arr + size);
-	//
-	//Timer t;
-	//insertionSort(arr, size);
-	//cout << t.elapsed() << endl;
-	////printArray(arr, size);
+
+	int a = 5;
+	cout << &a << endl;
+	cout << sizeof(a) << endl;
+	cout << a << endl;
+	cout << typeid(a).name() << endl;
+
+	int* p = &a;
+	cout << p << endl;
+	*p = 100;
+	cout << a << endl;
+
+	/*int b = 1;
+	int* pb = nullptr;
+
+	cout << (p < pb) << endl;
+	cout << (p > pb) << endl;
+	cout << (p == pb) << endl;
+	cout << (p != pb) << endl;*/
+
+
+	//int aa[] = { 81,23,45,76,54 };
+
+	//cout << aa << endl;
+
+	//cout << *(aa + 0) << endl;  // aa[0]
+	//cout << *(aa + 1) << endl;  // aa[1]
+	//cout << *(aa + 2) << endl;  // aa[2]
+
+	//for (size_t i = 0; i < 5; i++)
+	//{
+	//	cout << *(aa + i) << " ";
+	//}
+	//cout << endl;
+
+	//for (int* i = aa; i < aa + 5; i++)
+	//{
+	//	cout << *i << " ";
+	//}
+	//cout << endl;
+
+	//for (size_t i = 0; i < 5; i++)
+	//{
+	//	cout << aa[i] << " ";
+	//}
+	//cout << endl;
 
 
 
-	const int row = 4;
-	const int col = 4;
-	int arr[10][10];
-	for (size_t i = 0; i < row; i++)
-	{
-		for (size_t j = 0; j < col; j++)
-		{
-			arr[i][j] = rand() % 10;
-		}
-	}
+	/*cout << p - 1 << endl;
+	cout << *(p - 1) << endl;
 
-	printArray2D(arr, row, col);
-	//
+	double d = 4.32;
+	double* pp = &d;
+	cout << pp << endl;
+	cout << pp + 1 << endl;
+	cout << *(pp + 1) << endl;*/
 
-	for (size_t i = 0; i < row - 1; i++)
-	{
-		for (size_t j = 0; j < row - 1 - i; j++)
-		{
-			if (arr[j][0] > arr[j + 1][0])
-			{
-				for (size_t k = 0; k < col; k++)
-				{
-					swap(arr[j][k], arr[j+1][k]);
-				}
-			}
-		}
-	}
+
+
+
+	/*int b = 4;
+	p = &b;
+	*p = 999;
+
+	cout << b << endl;
+
+	p = &a;
+
+	double d = 4.32;
+	double* pp = &d;
+
+	cout << sizeof(pp) << endl;
+
+	char c = 'A';
+	char* cp = &c;
+	cout << sizeof(c) << endl;
+	cout << sizeof(cp) << endl;*/
+
+
+	/*int size;
+	cin >> size;
+
+	int* pp = new int[size];
+	setArray(pp, size);
+	printArray(pp, size);
 	
-	cout << endl;
-	printArray2D(arr, row, col);
+	pp = addValueArray(pp, &size, 999);
+
+	printArray(pp, size);
+	
+	pp = removeValueArray(pp, &size);
+
+	printArray(pp, size);
+
+	delete[] pp;*/
+
+
+	int size;
+	cin >> size;
+
+	int* A = new int[size];
+	setArray(A, size);
+	printArray(A, size);
+
+	int* B = nullptr;
+	int sizeB = 0;
+
+	for (size_t i = 0; i < size; i++)
+	{
+		if (A[i] % 2 == 0) 
+		{
+			B = addValueArray(B, &sizeB, A[i]);
+		}
+	}
+
+	printArray(B, sizeB);
+
 
 	system("pause");
 }
