@@ -2,6 +2,7 @@
 #include<Windows.h>
 #include<iomanip>
 #include<algorithm>
+#include<conio.h>
 
 #include"function.h"
 #include"Timer.h"
@@ -36,8 +37,6 @@ auto Sum(T1 a, T2 b, T3 c) -> decltype(a + b)
 	return a + b + c;
 }
 
-
-
 float avg(int a, int b, int c)
 {
 	float d = ((float)a + b + c) / 3;
@@ -45,6 +44,62 @@ float avg(int a, int b, int c)
 }
 
 
+void hello()
+{
+	cout << "Hello" << endl;
+}
+
+void goodbye()
+{
+	cout << "GoodBye" << endl;
+}
+
+
+int sum(int a, int b)
+{
+	return a + b;
+}
+
+int diff(int a, int b)
+{
+	return a - b;
+}
+
+int mult(int a, int b)
+{
+	return a * b;
+}
+
+int division(int a, int b)
+{
+	return a / b;
+}
+
+void gun(int* bullet)
+{
+	cout << "->" << endl;
+	bullet[0]--;
+}
+
+void mashineGun(int* bullet)
+{
+	cout << "->->->->->" << endl;
+	bullet[1] -= 5;
+}
+
+
+void arrow(int* bullet)
+{
+	cout << ">>----->" << endl;
+	bullet[2]--;
+}
+
+
+void (*logic(int* bullet))(int*)
+{
+	void(*weapon[])(int*) = { gun, mashineGun, arrow };
+	return weapon[findArray(bullet, 3, maxValueArray(bullet, 3))];
+}
 
 
 int main()
@@ -54,105 +109,33 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
+	/*int a = 5;      int b = 5;
+	int* pa = &a;   int& rb = b;
+	*pa = 100;      rb = 100;
+	pa = &b;        rb = a;
 
 	int a = 5;
-	cout << &a << endl;
-	cout << sizeof(a) << endl;
-	cout << a << endl;
-	cout << typeid(a).name() << endl;
+	int b = 4;*/
 
-	int* p = &a;
-	cout << p << endl;
-	*p = 100;
-	cout << a << endl;
+	//const int* pa = &a;
+	////*pa = 100; // not!
+	//a = 100;
+	//pa = &b;
+	////*pa = 100; // not!
 
-	/*int b = 1;
-	int* pb = nullptr;
+	//int* const pa = &a;
+	//*pa = 100;
+	////pa = &b;   // not!
 
-	cout << (p < pb) << endl;
-	cout << (p > pb) << endl;
-	cout << (p == pb) << endl;
-	cout << (p != pb) << endl;*/
-
-
-	//int aa[] = { 81,23,45,76,54 };
-
-	//cout << aa << endl;
-
-	//cout << *(aa + 0) << endl;  // aa[0]
-	//cout << *(aa + 1) << endl;  // aa[1]
-	//cout << *(aa + 2) << endl;  // aa[2]
-
-	//for (size_t i = 0; i < 5; i++)
-	//{
-	//	cout << *(aa + i) << " ";
-	//}
-	//cout << endl;
-
-	//for (int* i = aa; i < aa + 5; i++)
-	//{
-	//	cout << *i << " ";
-	//}
-	//cout << endl;
-
-	//for (size_t i = 0; i < 5; i++)
-	//{
-	//	cout << aa[i] << " ";
-	//}
-	//cout << endl;
+	//const int* const pa = &a;
+	//*pa = 100;   // not!
+	//pa = &b;b    // not!
 
 
 
-	/*cout << p - 1 << endl;
-	cout << *(p - 1) << endl;
-
-	double d = 4.32;
-	double* pp = &d;
-	cout << pp << endl;
-	cout << pp + 1 << endl;
-	cout << *(pp + 1) << endl;*/
-
-
-
-
-	/*int b = 4;
-	p = &b;
-	*p = 999;
-
-	cout << b << endl;
-
-	p = &a;
-
-	double d = 4.32;
-	double* pp = &d;
-
-	cout << sizeof(pp) << endl;
-
-	char c = 'A';
-	char* cp = &c;
-	cout << sizeof(c) << endl;
-	cout << sizeof(cp) << endl;*/
 
 
 	/*int size;
-	cin >> size;
-
-	int* pp = new int[size];
-	setArray(pp, size);
-	printArray(pp, size);
-	
-	pp = addValueArray(pp, &size, 999);
-
-	printArray(pp, size);
-	
-	pp = removeValueArray(pp, &size);
-
-	printArray(pp, size);
-
-	delete[] pp;*/
-
-
-	int size;
 	cin >> size;
 
 	int* A = new int[size];
@@ -164,13 +147,80 @@ int main()
 
 	for (size_t i = 0; i < size; i++)
 	{
-		if (A[i] % 2 == 0) 
+		if (A[i] % 2 == 0)
 		{
-			B = addValueArray(B, &sizeB, A[i]);
+			addValueArray(B, sizeB, A[i]);
 		}
 	}
 
-	printArray(B, sizeB);
+	printArray(B, sizeB);*/
+	
+
+
+	// type_f (*name_ptr) (param_f);
+
+	/*void(*message)();
+	message = hello;
+	message();
+	message = goodbye;
+	message();
+
+	void(*func[])() = { hello, goodbye };
+	for (size_t i = 0; i < 2; i++)
+	{
+		func[i]();
+	}*/
+
+	/*int(*operation[])(int, int) = { sum, diff, mult, division };
+	int a, b;
+	cin >> a >> b;
+	cout << "1 +, 2 - , 3 *, 4 /  ";
+	int op;
+	cin >> op;
+	cout << operation[op - 1](a, b) << endl;*/
+
+
+	/*int size;
+	cin >> size;
+
+	int* A = new int[size];
+	setArray(A, size, 0, 1000);
+	printArray(A, size);
+	bubbleSort(A, size, evenFirst);
+	printArray(A, size);*/
+
+
+	int bullet[3] = { 50, 50, 50 };
+	void(*shot)(int*) = nullptr;
+	
+	while (true)
+	{
+		if (_kbhit())
+		{
+			char c = _getch();
+			if (c == 'c')
+			{
+				shot = logic(bullet);
+			}
+			if (c == 'a')
+			{
+				shot = arrow;
+			}
+			if (c == 'g')
+			{
+				shot = gun;
+			}
+			if (c == 'm')
+			{
+				shot = mashineGun;
+
+			}
+
+			if(shot)
+				shot(bullet);
+		}
+	}
+
 
 
 	system("pause");

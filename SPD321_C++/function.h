@@ -7,7 +7,7 @@
 using namespace std;
 
 template<class T>
-void printArray(T* arr, int size)
+void printArray(const T* arr, const int size)
 {
 	for (size_t i = 0; i < size; i++)
 	{
@@ -107,20 +107,51 @@ void perfectInterval(int a, int b)
 	cout << endl;
 }
 
+template<class T>
+bool ascending(T a, T b)
+{
+	return a > b;
+}
 
 template<class T>
-void bubbleSort(T* arr, int size)
+bool descending(T a, T b)
+{
+	return a < b;
+}
+
+
+bool evenFirst(int a, int b)
+{
+	if (a % 2 == 1 && b % 2 == 0)
+		return true;
+	if (a % 2 == 0 && b % 2 == 1)
+		return false;
+	return ascending(a, b);
+}
+
+bool lastNumber(int a, int b)
+{
+	if (a % 10 > b % 10)
+		return true;
+	/*if (a % 10 < b % 10)
+		return false;*/
+	if (a % 10 == b % 10)
+		return ascending(a, b);
+}
+
+template<class T>
+void bubbleSort(T* arr, int size, bool(*method)(T,T) = ascending)
 {
 	for (size_t i = 0; i < size - 1; i++)
 	{
 		for (size_t j = 0; j < size - 1 - i; j++)
 		{
-			if (arr[j] > arr[j + 1])
+			if (method(arr[j], arr[j + 1]))
 			{
 				/*T temp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = temp;*/
-				swap(arr[i], arr[j + 1]);
+				swap(arr[j], arr[j + 1]);
 			}
 		}
 	}
@@ -181,28 +212,28 @@ void printArray2D(T arr[][10], int row, int col)
 
 
 template<class T>
-T* addValueArray(T* arr, int* size, T value)
+void addValueArray(T*& arr, int& size, const T& value)
 {
-	T* temp = new T[*size + 1];
-	for (size_t i = 0; i < *size; i++)
+	T* temp = new T[size + 1];
+	for (size_t i = 0; i < size; i++)
 	{
 		temp[i] = arr[i];
 	}
-	temp[*size] = value;
+	temp[size] = value;
 	delete[] arr;
-	(*size)++;
-	return temp;
+	size++;
+	arr = temp;
 }
 
 template<class T>
-T* removeValueArray(T* arr, int* size) 
+void removeValueArray(T*& arr, int& size) 
 {
-	T* temp = new T[*size - 1];
-	for (size_t i = 0; i < *size - 1; i++)
+	T* temp = new T[size - 1];
+	for (size_t i = 0; i < size - 1; i++)
 	{
 		temp[i] = arr[i];
 	}
 	delete[] arr;
-	(*size)--;
-	return temp;
+	size--;
+	arr = temp;
 }

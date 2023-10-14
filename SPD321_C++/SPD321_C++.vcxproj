@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="02092023.cpp" />
+    <ClCompile Include="07102023.cpp" />
     <ClCompile Include="09.09.2023.cpp" />
     <ClCompile Include="16092023.cpp" />
     <ClCompile Include="23092023.cpp" />
