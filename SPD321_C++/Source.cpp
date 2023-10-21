@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
 #include<Windows.h>
 #include<iomanip>
 #include<algorithm>
@@ -102,6 +103,45 @@ void (*logic(int* bullet))(int*)
 }
 
 
+int lenStr(const char* st)
+{
+	int count = 0;
+	while (st[count] != '\0')
+	{
+		count++;
+	}
+	return count;
+}
+
+
+int countWord(const char* st)
+{
+	return 0;
+}
+
+
+char* delWord(const char* st, const char* word)
+{
+	const char* p;
+	int len = strlen(st);
+	char* _new = new char[len + 1];
+	_new[0] = '\0';
+	while (strstr(st, word))
+	{
+		p = strstr(st, word);
+		strncat_s(_new, len + 1, st, p - st);
+		st = p + strlen(word);
+	}
+	strcat_s(_new, len + 1, st);
+	return _new;
+}
+
+
+char* replaceWord(const char* st, const char* _old, const char* _new)
+{
+	return nullptr;
+}
+
 int main()
 {
 	SetConsoleCP(1251);
@@ -109,118 +149,80 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	/*int a = 5;      int b = 5;
-	int* pa = &a;   int& rb = b;
-	*pa = 100;      rb = 100;
-	pa = &b;        rb = a;
+	//char str[] = "Hello";  //{ 'H', 'e', 'l', 'l', 'o', '\0'};
+	//int arr[] = { 1,2,3,4,5 };
 
-	int a = 5;
-	int b = 4;*/
+	//cout << arr << endl;
+	//cout << str + 2 << endl;
 
-	//const int* pa = &a;
-	////*pa = 100; // not!
-	//a = 100;
-	//pa = &b;
-	////*pa = 100; // not!
+	/*char buff[1024];
+	cin.getline(buff, 80);
+	cout << buff << endl;
 
-	//int* const pa = &a;
-	//*pa = 100;
-	////pa = &b;   // not!
-
-	//const int* const pa = &a;
-	//*pa = 100;   // not!
-	//pa = &b;b    // not!
+	char* st = new char[strlen(buff) + 1];
+	strcpy_s(st, strlen(buff) + 1, buff);
+	cout << st << endl;*/
 
 
+	/*char str1[80];
+	cout << "str1 : ";
+	cin.getline(str1, 80);
+
+
+	char str2[80];
+	cout << "str2 : ";
+	cin.getline(str2, 80);*/
+
+
+	//strcpy_s(str2, 80, str1);
+	//strncpy_s(str2, 80, str1, 5);
+
+	//strcat_s(str2, 80, str1);
+	//strncat_s(str2, 80, str1, 5);
+
+	//cout << strcmp(str1, str2) << endl;
+	//cout << strncmp(str1, str2, 5) << endl;
+	//cout << _stricmp(str1, str2) << endl;
+	//cout << _strnicmp(str1, str2, 5) << endl;
+
+
+	////char* t = strchr(str1, 'q');
+	//char* t = strrchr(str1, 'q');
+	//if(t != nullptr)
+	//	cout << t << endl;
+
+
+	/*char* t = strstr(str1, str2);
+	if(t != nullptr)
+		cout << t << endl;*/
+
+
+	//_strset_s(str1, '#');
+
+
+	//int i = atoi(str1);
+	//double i = atof(str1);
+	//long i = atol(str1);
+	//cout << i << endl;
+
+	//_itoa(234534555, str1, 36);
+
+
+	/*cout << isalnum('і') << endl;
+	cout << isdigit('5') << endl;
+	cout << isspace(' ') << endl;
+	cout << ispunct(',') << endl;
+	cout << isupper('A') << endl;
+	cout << islower('a') << endl;
+	cout << isprint('a') << endl;*/
 
 
 
-	/*int size;
-	cin >> size;
+	/*cout << endl;
+	cout << str1 << endl;
+	cout << str2 << endl;*/
 
-	int* A = new int[size];
-	setArray(A, size);
-	printArray(A, size);
-
-	int* B = nullptr;
-	int sizeB = 0;
-
-	for (size_t i = 0; i < size; i++)
-	{
-		if (A[i] % 2 == 0)
-		{
-			addValueArray(B, sizeB, A[i]);
-		}
-	}
-
-	printArray(B, sizeB);*/
-	
-
-
-	// type_f (*name_ptr) (param_f);
-
-	/*void(*message)();
-	message = hello;
-	message();
-	message = goodbye;
-	message();
-
-	void(*func[])() = { hello, goodbye };
-	for (size_t i = 0; i < 2; i++)
-	{
-		func[i]();
-	}*/
-
-	/*int(*operation[])(int, int) = { sum, diff, mult, division };
-	int a, b;
-	cin >> a >> b;
-	cout << "1 +, 2 - , 3 *, 4 /  ";
-	int op;
-	cin >> op;
-	cout << operation[op - 1](a, b) << endl;*/
-
-
-	/*int size;
-	cin >> size;
-
-	int* A = new int[size];
-	setArray(A, size, 0, 1000);
-	printArray(A, size);
-	bubbleSort(A, size, evenFirst);
-	printArray(A, size);*/
-
-
-	int bullet[3] = { 50, 50, 50 };
-	void(*shot)(int*) = nullptr;
-	
-	while (true)
-	{
-		if (_kbhit())
-		{
-			char c = _getch();
-			if (c == 'c')
-			{
-				shot = logic(bullet);
-			}
-			if (c == 'a')
-			{
-				shot = arrow;
-			}
-			if (c == 'g')
-			{
-				shot = gun;
-			}
-			if (c == 'm')
-			{
-				shot = mashineGun;
-
-			}
-
-			if(shot)
-				shot(bullet);
-		}
-	}
-
+	cout << delWord("nullptr liejwied C++ lwejfw C++", "C++,") << endl;
 
 
 	system("pause");
