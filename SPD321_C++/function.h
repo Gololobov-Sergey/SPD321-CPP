@@ -198,20 +198,6 @@ void insertionSort(T* arr, int size)
 
 
 template<class T>
-void printArray2D(T arr[][10], int row, int col)
-{
-	for (size_t i = 0; i < row; i++)
-	{
-		for (size_t j = 0; j < col; j++)
-		{
-			cout << setw(3) << arr[i][j];
-		}
-		cout << endl;
-	}
-}
-
-
-template<class T>
 void addValueArray(T*& arr, int& size, const T& value)
 {
 	T* temp = new T[size + 1];
@@ -235,5 +221,119 @@ void removeValueArray(T*& arr, int& size)
 	}
 	delete[] arr;
 	size--;
+	arr = temp;
+}
+
+
+
+///////// ARRAY 2D ///////////
+
+template<class T>
+void createArray2D(T**& arr, int row, int col)
+{
+	arr = new T * [row];
+	for (size_t i = 0; i < row; i++)
+	{
+		arr[i] = new T[col];
+	}
+}
+
+template<class T>
+void deleteArray2D(T**& arr, int row)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+	arr = nullptr;
+}
+
+
+template<class T>
+void printArray2D(T** arr, int row, int col)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			cout << setw(3) << arr[i][j];
+		}
+		cout << endl;
+	}
+}
+
+
+template<class T>
+void setArray2D(T** arr, int row, int col, int min = 0, int max = 9)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		for (size_t j = 0; j < col; j++)
+		{
+			arr[i][j] = rand() % (max - min + 1) + min;
+		}
+	}
+}
+
+
+template<class T>
+void addRowArray2D(T**& arr, int& row, int col, T* newRow = nullptr)
+{
+	T** temp = new T * [row + 1];
+	for (size_t i = 0; i < row; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[row] = new T[col]{ 0 };
+	if (newRow != nullptr)
+	{
+		for (size_t i = 0; i < col; i++)
+		{
+			temp[row][i] = newRow[i];
+		}
+	}
+	delete[] arr;
+	row++;
+	arr = temp;
+}
+
+
+template<class T>
+void delRowArray2D(T**& arr, int& row)
+{
+	T** temp = new T * [row - 1];
+	for (size_t i = 0; i < row - 1; i++)
+	{
+		temp[i] = arr[i];
+	}
+	delete[] arr[row - 1];
+	delete[] arr;
+	row--;
+	arr = temp;
+}
+
+template<class T>
+void addRowIndexArray2D(T**& arr, int& row, int col, int index, T* newRow = nullptr)
+{
+	T** temp = new T * [row + 1];
+	for (size_t i = 0; i < index; i++)
+	{
+		temp[i] = arr[i];
+	}
+	temp[index] = new T[col]{ 0 };
+	if (newRow != nullptr)
+	{
+		for (size_t i = 0; i < col; i++)
+		{
+			temp[index][i] = newRow[i];
+		}
+	}
+	for (size_t i = index; i < row; i++)
+	{
+		temp[i + 1] = arr[i];
+	}
+	delete[] arr;
+	row++;
 	arr = temp;
 }

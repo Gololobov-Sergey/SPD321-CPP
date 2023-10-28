@@ -113,34 +113,13 @@ int lenStr(const char* st)
 	return count;
 }
 
-
-int countWord(const char* st)
+bool strCompare(char* st1, char* st2)
 {
-	return 0;
+	if (strcmp(st1, st2) > 0)
+		return true;
+	return false;
 }
 
-
-char* delWord(const char* st, const char* word)
-{
-	const char* p;
-	int len = strlen(st);
-	char* _new = new char[len + 1];
-	_new[0] = '\0';
-	while (strstr(st, word))
-	{
-		p = strstr(st, word);
-		strncat_s(_new, len + 1, st, p - st);
-		st = p + strlen(word);
-	}
-	strcat_s(_new, len + 1, st);
-	return _new;
-}
-
-
-char* replaceWord(const char* st, const char* _old, const char* _new)
-{
-	return nullptr;
-}
 
 int main()
 {
@@ -149,81 +128,72 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	//char str[] = "Hello";  //{ 'H', 'e', 'l', 'l', 'o', '\0'};
-	//int arr[] = { 1,2,3,4,5 };
+	/*int a = 5;
+	int* p1 = &a;
+	int** p2 = &p1;
 
-	//cout << arr << endl;
-	//cout << str + 2 << endl;
+	cout << *p2 << endl;
 
-	/*char buff[1024];
-	cin.getline(buff, 80);
-	cout << buff << endl;
+	cout << *p1 << endl;
+	cout << **p2 << endl;*/
 
-	char* st = new char[strlen(buff) + 1];
-	strcpy_s(st, strlen(buff) + 1, buff);
-	cout << st << endl;*/
+	/*int row, col;
+	cin >> row >> col;
+	int** p = nullptr;
+	createArray2D(p, row, col);
+	setArray2D(p, row, col);
+	printArray2D(p, row, col);*/
 
+	/*cout << p[1][3] << endl;
+	cout << *(p[1] + 3) << endl;
+	cout << *(*(p + 1) + 3) << endl;*/
 
-	/*char str1[80];
-	cout << "str1 : ";
-	cin.getline(str1, 80);
+	/*for (size_t i = 0; i < col; i++)
+	{
+		swap(p[0][i], p[row - 1][i]);
+	}*/
 
+	//swap(p[0], p[row - 1]);
 
-	char str2[80];
-	cout << "str2 : ";
-	cin.getline(str2, 80);*/
+	/*int* b = new int[col];
+	setArray(b, col);
+	printArray(b, col);
 
+	addRowIndexArray2D(p, row, col, 2, b);
+	cout << endl;
+	printArray2D(p, row, col);
 
-	//strcpy_s(str2, 80, str1);
-	//strncpy_s(str2, 80, str1, 5);
-
-	//strcat_s(str2, 80, str1);
-	//strncat_s(str2, 80, str1, 5);
-
-	//cout << strcmp(str1, str2) << endl;
-	//cout << strncmp(str1, str2, 5) << endl;
-	//cout << _stricmp(str1, str2) << endl;
-	//cout << _strnicmp(str1, str2, 5) << endl;
-
-
-	////char* t = strchr(str1, 'q');
-	//char* t = strrchr(str1, 'q');
-	//if(t != nullptr)
-	//	cout << t << endl;
+	addRowIndexArray2D(p, row, col, 1);
+	cout << endl;
+	printArray2D(p, row, col);*/
 
 
-	/*char* t = strstr(str1, str2);
-	if(t != nullptr)
-		cout << t << endl;*/
+	/*delRowArray2D(p, row);
+	cout << endl;
+	printArray2D(p, row, col);*/
 
 
-	//_strset_s(str1, '#');
+	//deleteArray2D(p, row);
 
 
-	//int i = atoi(str1);
-	//double i = atof(str1);
-	//long i = atol(str1);
-	//cout << i << endl;
+	int row = 5;
+	char** pib = new char* [row];
+	for (size_t i = 0; i < row; i++)
+	{
+		char buff[80];
+		cin.getline(buff, 80);
+		int len = strlen(buff);
+		pib[i] = new char[len + 1];
+		strcpy_s(pib[i], len + 1, buff);
+	}
 
-	//_itoa(234534555, str1, 36);
+	bubbleSort(pib, row, strCompare);
 
-
-	/*cout << isalnum('і') << endl;
-	cout << isdigit('5') << endl;
-	cout << isspace(' ') << endl;
-	cout << ispunct(',') << endl;
-	cout << isupper('A') << endl;
-	cout << islower('a') << endl;
-	cout << isprint('a') << endl;*/
-
-
-
-	/*cout << endl;
-	cout << str1 << endl;
-	cout << str2 << endl;*/
-
-	cout << delWord("nullptr liejwied C++ lwejfw C++", "C++,") << endl;
-
+	cout << endl;
+	for (size_t i = 0; i < row; i++)
+	{
+		cout << pib[i] << endl;
+	}
 
 	system("pause");
 }
