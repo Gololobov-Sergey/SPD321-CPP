@@ -42,12 +42,18 @@
     <ClCompile Include="211020232.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="28102023.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

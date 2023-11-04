@@ -7,6 +7,7 @@
 
 #include"function.h"
 #include"Timer.h"
+#include"Struct.h"
 
 using namespace std;
 
@@ -128,72 +129,78 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	/*int a = 5;
-	int* p1 = &a;
-	int** p2 = &p1;
+	/*Point p;
+	p.name = 'A';
+	p.x = 10;
+	p.y = 20;
 
-	cout << *p2 << endl;
+	Point p1 = {'B', 13, 23};
+	printPoint(p);
+	printPoint(p1);
 
-	cout << *p1 << endl;
-	cout << **p2 << endl;*/
-
-	/*int row, col;
-	cin >> row >> col;
-	int** p = nullptr;
-	createArray2D(p, row, col);
-	setArray2D(p, row, col);
-	printArray2D(p, row, col);*/
-
-	/*cout << p[1][3] << endl;
-	cout << *(p[1] + 3) << endl;
-	cout << *(*(p + 1) + 3) << endl;*/
-
-	/*for (size_t i = 0; i < col; i++)
+	Point p2[3] = { {'C', 34, 45}, {'D', 32, 51}, {'E', 33, 55} };
+	for (size_t i = 0; i < 3; i++)
 	{
-		swap(p[0][i], p[row - 1][i]);
+		printPoint(p2[i]);
 	}*/
 
-	//swap(p[0], p[row - 1]);
-
-	/*int* b = new int[col];
-	setArray(b, col);
-	printArray(b, col);
-
-	addRowIndexArray2D(p, row, col, 2, b);
-	cout << endl;
-	printArray2D(p, row, col);
-
-	addRowIndexArray2D(p, row, col, 1);
-	cout << endl;
-	printArray2D(p, row, col);*/
+	/*Point* p3 = &p;
+	p3->name = 'W';
+	printPoint(p);*/
 
 
-	/*delRowArray2D(p, row);
-	cout << endl;
-	printArray2D(p, row, col);*/
-
-
-	//deleteArray2D(p, row);
-
-
-	int row = 5;
-	char** pib = new char* [row];
-	for (size_t i = 0; i < row; i++)
+	/*const int size = 15;
+	Point p[size];
+	for (size_t i = 0; i < size; i++)
 	{
-		char buff[80];
-		cin.getline(buff, 80);
-		int len = strlen(buff);
-		pib[i] = new char[len + 1];
-		strcpy_s(pib[i], len + 1, buff);
+		p[i].name = 65 + i;
+		p[i].x = rand() % 10;
+		p[i].y = rand() % 10;
+
+		printPoint(p[i]);
 	}
 
-	bubbleSort(pib, row, strCompare);
-
-	cout << endl;
-	for (size_t i = 0; i < row; i++)
+	float maxLen = 0;
+	int i1 = 0;
+	int i2 = 0;
+	for (size_t i = 0; i < size - 1; i++)
 	{
-		cout << pib[i] << endl;
+		for (size_t j = i + 1; j < size; j++)
+		{
+			float len = lenPoint(p[i], p[j]);
+			if (len > maxLen)
+			{
+				maxLen = len;
+				i1 = i;
+				i2 = j;
+			}
+		}
 	}
+	cout << "Max Len = " << maxLen << endl;
+	printPoint(p[i1]);
+	printPoint(p[i2]);*/
+
+
+	Point p1 = { 'B', 13, 23 };
+	p1.print();
+
+	Date d = { 4,1,2023 };
+	d.print();
+
+	Human h = { new char[] {"Oleg"}, 12,1,2000 };
+	h.print();
+
+	Car car;
+	car.move();
+	car.beep();
+
+	Fraction f1 = { 1,3 };
+	Fraction f2 = { 3,7 };
+	Fraction f3 = f1.add(f2);
+
+	Garage g;
+	//g.menu();
+
 
 	system("pause");
 }

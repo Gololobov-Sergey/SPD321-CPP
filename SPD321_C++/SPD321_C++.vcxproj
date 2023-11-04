@@ -135,11 +135,13 @@
     <ClCompile Include="16092023.cpp" />
     <ClCompile Include="211020232.cpp" />
     <ClCompile Include="23092023.cpp" />
+    <ClCompile Include="28102023.cpp" />
     <ClCompile Include="30092023.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="function.h" />
+    <ClInclude Include="Struct.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

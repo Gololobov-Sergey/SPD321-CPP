@@ -337,3 +337,23 @@ void addRowIndexArray2D(T**& arr, int& row, int col, int index, T* newRow = null
 	row++;
 	arr = temp;
 }
+
+template<class T>
+void addColumn(T**& arr, int row, int& col, T* newColumn)
+{
+	for (size_t i = 0; i < row; i++)
+	{
+		addValueArray(arr[i], col, newColumn[i]);
+		col--;
+
+		/*T* temp = new T[col + 1];
+		for (size_t j = 0; j < col; j++)
+		{
+			temp[j] = arr[i][j];
+		}
+		temp[col] = newColumn[i];
+		delete[] arr[i];
+		arr[i] = temp;*/
+	}
+	col++;
+}
