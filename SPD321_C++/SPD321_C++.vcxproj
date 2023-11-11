@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="02092023.cpp" />
+    <ClCompile Include="04112023.cpp" />
     <ClCompile Include="07102023.cpp" />
     <ClCompile Include="09.09.2023.cpp" />
     <ClCompile Include="14102023.cpp" />
@@ -143,6 +144,9 @@
     <ClInclude Include="function.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="Timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="text.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

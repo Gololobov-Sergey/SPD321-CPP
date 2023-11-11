@@ -4,10 +4,23 @@
 #include<iomanip>
 #include<algorithm>
 #include<conio.h>
+#include<fstream>
 
 #include"function.h"
 #include"Timer.h"
 #include"Struct.h"
+
+#define PRINT cout
+#define PI 3.141592
+#define BEGIN {
+#define END }
+#define SQR(n) (n)*(n)
+#define ЦИКЛ(n) for(size_t i = 0; i < n; i++)
+#define ЯКЩО if
+
+#define SIZE 50
+
+//#define TEST
 
 using namespace std;
 
@@ -129,79 +142,109 @@ int main()
 	cout.setf(ios::boolalpha);
 	srand(time(0));
 
-	/*Point p;
-	p.name = 'A';
-	p.x = 10;
-	p.y = 20;
+	SetColor(Color::White, Black);
+	// |  & >> << 
+	/*cout << (3 | 5) << endl;
+	cout << (3 & 5) << endl;
+	cout << (3 << 2) << endl;*/
 
-	Point p1 = {'B', 13, 23};
-	printPoint(p);
-	printPoint(p1);
+	/*PRINT << "Hello" << endl;
 
+	ЦИКЛ(5)
+	BEGIN
+		cout << "Hello" << endl;
+	END
+
+	ЯКЩО(2 == 2)
+	cout << SQR(5+1) << endl;*/
+
+
+//#ifdef TEST
+//	int arr[SIZE];
+//#else
+//	int* arr = new int[SIZE];
+//#endif
+//
+//	setArray(arr, SIZE);
+
+
+
+	int arr[] = { 1345,2345,3234,454645,545645 };
+	ofstream fout("text.bin", ios::binary);
+	fout.write((char*)&arr, sizeof(arr));
+	fout.close();
+
+	/*int* b = nullptr;
+	int size = 0;
+	ifstream in("text.txt");
+	int a;
+
+	while(in >> a)
+	{
+		addValueArray(b, size, a);
+	}
+	in.close();
+	printArray(b, size);*/
+
+	/*ofstream fout("point.txt");
 	Point p2[3] = { {'C', 34, 45}, {'D', 32, 51}, {'E', 33, 55} };
 	for (size_t i = 0; i < 3; i++)
 	{
-		printPoint(p2[i]);
+		p2[i].print();
+		fout << p2[i].name << " " << p2[i].x << " " << p2[i].y << endl;
 	}*/
 
-	/*Point* p3 = &p;
-	p3->name = 'W';
-	printPoint(p);*/
-
-
-	/*const int size = 15;
-	Point p[size];
-	for (size_t i = 0; i < size; i++)
+	/*ifstream fin("point.txt");
+	Point* p = nullptr;
+	int size = 0;
+	if (fin.is_open())
 	{
-		p[i].name = 65 + i;
-		p[i].x = rand() % 10;
-		p[i].y = rand() % 10;
-
-		printPoint(p[i]);
-	}
-
-	float maxLen = 0;
-	int i1 = 0;
-	int i2 = 0;
-	for (size_t i = 0; i < size - 1; i++)
-	{
-		for (size_t j = i + 1; j < size; j++)
+		Point t;
+		while (fin >> t.name >> t.x >> t.y)
 		{
-			float len = lenPoint(p[i], p[j]);
-			if (len > maxLen)
-			{
-				maxLen = len;
-				i1 = i;
-				i2 = j;
-			}
+			addValueArray(p, size, t);
 		}
 	}
-	cout << "Max Len = " << maxLen << endl;
-	printPoint(p[i1]);
-	printPoint(p[i2]);*/
+	for (size_t i = 0; i < size; i++)
+	{
+		p[i].print();
+	}*/
+
+	/*ifstream fin("virsh.txt");
+	char buff[80];
+	while (!fin.eof())
+	{
+		fin.getline(buff, 80);
+		cout << buff << endl;
+	}*/
+
+	/*Human h = { new char[] {"Osipov Oleg"}, 12,1,2000 };
+	h.print();*/
+
+	/*ofstream fout("human.txt");
+	fout << h.name << endl;
+	fout << h.birthDay.day << " " << h.birthDay.month << " " << h.birthDay.year << endl;*/
+
+	
+	/*ifstream in("human.txt");
+	char buff[80];
+	int size;
+	in >> size;
+	in.get();
+	Human* d = new Human[size];
+	for (size_t i = 0; i < size; i++)
+	{
+		in.getline(buff, 80);
+		d[i].name = new char[strlen(buff) + 1];
+		strcpy_s(d[i].name, strlen(buff) + 1, buff);
+		in >> d[i].birthDay.day >> d[i].birthDay.month >> d[i].birthDay.year;
+		in.get();
+
+		d[i].print();
+	}*/
 
 
-	Point p1 = { 'B', 13, 23 };
-	p1.print();
-
-	Date d = { 4,1,2023 };
-	d.print();
-
-	Human h = { new char[] {"Oleg"}, 12,1,2000 };
-	h.print();
-
-	Car car;
-	car.move();
-	car.beep();
-
-	Fraction f1 = { 1,3 };
-	Fraction f2 = { 3,7 };
-	Fraction f3 = f1.add(f2);
-
-	Garage g;
-	//g.menu();
-
-
+	SetColor(7, 0);
 	system("pause");
 }
 
